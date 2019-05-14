@@ -1,0 +1,1 @@
+The structure and setup of this repository was modeled off [@zgordon/how-to-gutenberg-plugin](https://github.com/zgordon/how-to-gutenberg-plugin). All credit for its cleverness goes to Zac Gordon. Blame for any errors goes to me.
