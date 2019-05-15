@@ -2,10 +2,6 @@
 /**
  * Bootstrap file to launch the plugin.
  *
- * @package     Detailer
- * @author      David Yeiser
- * @license     GPL2+
- *
  * @wordpress-plugin
  * Plugin Name: Detailer
  * Plugin URI:  https://github.com/davidyeiser/detailer
@@ -22,28 +18,12 @@ namespace DavidYeiser\Detailer;
 //  Exit if accessed directly.
 defined('ABSPATH') || exit;
 
-/**
- * Gets this plugin's absolute directory path.
- *
- * @since  0.1
- * @ignore
- * @access private
- *
- * @return string
- */
+// Gets this plugin's absolute directory path.
 function _get_plugin_directory() {
 	return __DIR__;
 }
 
-/**
- * Gets this plugin's URL.
- *
- * @since  0.1
- * @ignore
- * @access private
- *
- * @return string
- */
+// Gets this plugin's URL.
 function _get_plugin_url() {
 	static $plugin_url;
 

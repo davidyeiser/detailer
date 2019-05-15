@@ -1,4 +1,1 @@
-/* Actions on default blocks */
-
-/* Custom Blocks */
-// import './book-details'
+/* Blocks will be loaded here */
