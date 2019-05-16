@@ -1,16 +1,16 @@
 <?php
 /**
- * Bootstrap file to launch the plugin.
+ *  Bootstrap file to launch the plugin.
  *
- * @wordpress-plugin
- * Plugin Name: Detailer
- * Plugin URI:  https://github.com/davidyeiser/detailer
- * Description: Plugin to create custom Gutenberg block, Book Details.
- * Version:     0.1
- * Author:      David Yeiser
- * Author URI:  https://davidyeiser.com/
- * License:     GPL2+
- * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ *  @wordpress-plugin
+ *  Plugin Name: Detailer
+ *  Plugin URI:  https://github.com/davidyeiser/detailer
+ *  Description: Plugin to create custom Gutenberg block, Book Details.
+ *  Version:     0.1
+ *  Author:      David Yeiser
+ *  Author URI:  https://davidyeiser.com/
+ *  License:     GPL2+
+ *  License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 
 namespace DavidYeiser\Detailer;
