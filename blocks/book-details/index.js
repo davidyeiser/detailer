@@ -10,7 +10,7 @@ import './editor.css'
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
 
-registerBlockType('davidyeiser/detailer/book-details', {
+registerBlockType('davidyeiser-detailer/book-details', {
 	title: __( 'Book Details' ),
 	icon: 'format-aside',
 	category: 'common',
@@ -26,21 +26,33 @@ registerBlockType('davidyeiser/detailer/book-details', {
     // Turn off reusable block feature
     reusable: false,
     // Add alignwide and alignfull options
-    align: true
+    align: false
   },
 
   // Set up data model for custom block
   attributes: {
-
+    title: {
+      type: 'string',
+      selector: 'js-book-details-title'
+    },
+    author: {
+      type: 'string',
+      selector: 'js-book-details-author'
+    },
+    summary: {
+      type: 'string',
+      selector: 'js-book-details-summary',
+      multiline: 'p'
+    },
   },
 
   // The UI for the WordPress editor
 	edit: props => {
-
+    return null
 	},
 
   // The output on the live site
   save: props => {
-
+    return null
   }
 })

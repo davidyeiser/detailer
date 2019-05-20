@@ -25,11 +25,11 @@ const extractConfig = {
 
 module.exports = {
   entry: {
-    './assets/js/editor.blocks': './blocks/index.js'
+    'editor.blocks': './blocks/index.js'
   },
   output: {
     path: path.resolve( __dirname ),
-    filename: '[name].js',
+    filename: './assets/js/[name].js',
   },
   watch: 'production' !== process.env.NODE_ENV,
   devtool: 'cheap-eval-source-map',

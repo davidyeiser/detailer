@@ -1,1 +1,3 @@
-/* Blocks will be loaded here */
+/* Custom Blocks */
+
+import './book-details'
