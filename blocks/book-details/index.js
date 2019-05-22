@@ -9,6 +9,7 @@ import './editor.css'
 
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
+const { RichText } = wp.editor
 
 registerBlockType('davidyeiser-detailer/book-details', {
 	title: __( 'Book Details' ),
@@ -48,7 +49,20 @@ registerBlockType('davidyeiser-detailer/book-details', {
 
   // The UI for the WordPress editor
 	edit: props => {
-    return null
+    // Pull out the props we'll use
+    const { attributes, className, setAttributes } = props
+
+    return (
+			<div className={className}>
+        <RichText
+          className="js-book-details-title"
+          value={attributes.title}
+          onChange={value => setAttributes({ title: value })}
+          tagName="h3"
+          placeholder="Book title"
+        />
+      </div>
+    )
 	},
 
   // The output on the live site
