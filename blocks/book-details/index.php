@@ -24,6 +24,7 @@ function render_dynamic_block($attributes) {
   $book_details_summary = $attributes['summary'];
 
   ob_start(); // Turn on output buffering
+	
 	/* BEGIN HTML OUTPUT */
 ?>
   <div class="block-book-details">
@@ -35,8 +36,10 @@ function render_dynamic_block($attributes) {
     </div>
   </div>
 <?php
-	/* END HTML OUTPUT */
-  ob_flush(); // Print output
+  /* END HTML OUTPUT */
 
-  return ob_end_clean(); // Turn off output buffering
+	$output = ob_get_contents(); // collect output
+	ob_end_clean(); // Turn off ouput buffer
+
+	return $output; // Print output
 }
