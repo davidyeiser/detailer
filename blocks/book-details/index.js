@@ -88,7 +88,24 @@ registerBlockType('davidyeiser-detailer/book-details', {
 
     return (
       <div className={className}>
-        Hello website
+        <RichText.Content
+          className="book-details-title"
+          value={attributes.title}
+          tagName="h3"
+        />
+
+        <RichText.Content
+          className="book-details-author"
+          value={attributes.author}
+          tagName="span"
+        />
+
+        <RichText.Content
+          className="book-details-summary"
+          value={attributes.summary}
+          tagName="div"
+          multiline="p"
+        />
       </div>
     )
   }
