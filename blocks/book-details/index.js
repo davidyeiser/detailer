@@ -55,11 +55,28 @@ registerBlockType('davidyeiser-detailer/book-details', {
     return (
 			<div className={className}>
         <RichText
-          className="js-book-details-title"
+          className="js-book-details-title wp-admin-book-details-title"
           value={attributes.title}
           onChange={value => setAttributes({ title: value })}
           tagName="h3"
           placeholder="Book title"
+        />
+
+        <RichText
+          className="js-book-details-author wp-admin-book-details-author"
+          value={attributes.author}
+          onChange={value => setAttributes({ author: value })}
+          tagName="span"
+          placeholder="Book author"
+        />
+
+        <RichText
+          className="js-book-details-summary wp-admin-book-details-summary"
+          value={attributes.summary}
+          onChange={value => setAttributes({ summary: value })}
+          tagName="div"
+          placeholder="Book summary"
+          multiline="p"
         />
       </div>
     )
@@ -67,6 +84,12 @@ registerBlockType('davidyeiser-detailer/book-details', {
 
   // The output on the live site
   save: props => {
-    return null
+    const { attributes, className } = props
+
+    return (
+      <div className={className}>
+        Hello website
+      </div>
+    )
   }
 })
