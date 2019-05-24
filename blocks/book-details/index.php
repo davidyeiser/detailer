@@ -18,5 +18,25 @@ function register_dynamic_block() {
 }
 
 function render_dynamic_block($attributes) {
-  return 'Hello PHP block';
+  // Parse attributes
+  $book_details_title = $attributes['title'];
+  $book_details_author = $attributes['author'];
+  $book_details_summary = $attributes['summary'];
+
+  ob_start(); // Turn on output buffering
+	/* BEGIN HTML OUTPUT */
+?>
+  <div class="block-book-details">
+    <h3 class="block-book-details-title"><?php echo $book_details_title; ?></h3>
+    <span class="block-book-details-author"><?php echo $book_details_author; ?></span>
+
+    <div class="block-book-details-summary">
+      <?php echo $book_details_summary; ?>
+    </div>
+  </div>
+<?php
+	/* END HTML OUTPUT */
+  ob_flush(); // Print output
+
+  return ob_end_clean(); // Turn off output buffering
 }
