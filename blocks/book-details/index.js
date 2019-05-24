@@ -82,31 +82,8 @@ registerBlockType('davidyeiser-detailer/book-details', {
     )
 	},
 
-  // The output on the live site
+  // No save, dynamic block
   save: props => {
-    const { attributes, className } = props
-
-    return (
-      <div className={className}>
-        <RichText.Content
-          className="book-details-title"
-          value={attributes.title}
-          tagName="h3"
-        />
-
-        <RichText.Content
-          className="book-details-author"
-          value={attributes.author}
-          tagName="span"
-        />
-
-        <RichText.Content
-          className="book-details-summary"
-          value={attributes.summary}
-          tagName="div"
-          multiline="p"
-        />
-      </div>
-    )
+    return null
   }
 })
