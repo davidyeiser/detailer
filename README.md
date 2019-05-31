@@ -17,13 +17,13 @@ Place this project directory in `wp-content/plugins` and then run:
 yarn
 ```
 
-To build the files for development run:
+To build the files **for development** run:
 
 ```
 yarn run dev
 ```
 
-To build the files for production run:
+To build the files **for production** run:
 
 ```
 yarn run build
