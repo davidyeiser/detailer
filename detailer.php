@@ -20,18 +20,18 @@ defined('ABSPATH') || exit;
 
 // Gets this plugin's absolute directory path.
 function _get_plugin_directory() {
-	return __DIR__;
+  return __DIR__;
 }
 
 // Gets this plugin's URL.
 function _get_plugin_url() {
-	static $plugin_url;
+  static $plugin_url;
 
-	if (empty($plugin_url)) {
-		$plugin_url = plugins_url(null, __FILE__);
-	}
+  if (empty($plugin_url)) {
+    $plugin_url = plugins_url(null, __FILE__);
+  }
 
-	return $plugin_url;
+  return $plugin_url;
 }
 
 // Enqueue JS and CSS

@@ -7,7 +7,7 @@ A plugin for WordPress that creates a custom Gutenberg block called Book Details
 
 ## Credit
 
-The structure and setup of this repository is copied from [@zgordon/how-to-gutenberg-plugin](https://github.com/zgordon/how-to-gutenberg-plugin). All credit for its cleverness goes to Zac Gordon. Blame for any errors goes to me.
+The structure and setup of this repository is taken from [@zgordon/how-to-gutenberg-plugin](https://github.com/zgordon/how-to-gutenberg-plugin). All credit for its cleverness goes to Zac Gordon. Blame for any errors goes to me.
 
 ## Setup
 

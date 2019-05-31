@@ -12,13 +12,13 @@ const { registerBlockType } = wp.blocks
 const { RichText } = wp.editor
 
 registerBlockType('davidyeiser-detailer/book-details', {
-	title: __( 'Book Details' ),
-	icon: 'format-aside',
-	category: 'common',
-	keywords: [
-		__( 'book' ),
+  title: __( 'Book Details' ),
+  icon: 'format-aside',
+  category: 'common',
+  keywords: [
+    __( 'book' ),
     __( 'details' ),
-	],
+  ],
 
   // Enable or disable support for low-level features
   supports: {
@@ -48,12 +48,12 @@ registerBlockType('davidyeiser-detailer/book-details', {
   },
 
   // The UI for the WordPress editor
-	edit: props => {
+  edit: props => {
     // Pull out the props we'll use
     const { attributes, className, setAttributes } = props
 
     return (
-			<div className={className}>
+      <div className={className}>
         <RichText
           className="js-book-details-title wp-admin-book-details-title"
           value={attributes.title}
@@ -80,7 +80,7 @@ registerBlockType('davidyeiser-detailer/book-details', {
         />
       </div>
     )
-	},
+  },
 
   // No save, dynamic block
   save: props => {
