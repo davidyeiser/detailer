@@ -1,27 +1,14 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // Set different CSS extraction for editor only and common block styles
-const blocksCSSPlugin = new ExtractTextPlugin({
-  filename: './assets/css/blocks.style.css',
+const blocksCSSPlugin = new MiniCssExtractPlugin({
+  filename: './assets/css/blocks.style.css'
 });
-const editBlocksCSSPlugin = new ExtractTextPlugin({
-  filename: './assets/css/blocks.editor.css',
+const editBlocksCSSPlugin = new MiniCssExtractPlugin({
+  filename: './assets/css/blocks.editor.css'
 });
-
-// Configuration for the ExtractTextPlugin.
-const extractConfig = {
-  use: [
-    { loader: 'raw-loader' },
-    {
-      loader: 'postcss-loader',
-      options: {
-        plugins: [ require('autoprefixer') ],
-      },
-    },
-  ],
-};
 
 module.exports = {
   entry: {
@@ -29,7 +16,7 @@ module.exports = {
   },
   output: {
     path: path.resolve( __dirname ),
-    filename: './assets/js/[name].js',
+    filename: './assets/js/[name].js'
   },
   watch: 'production' !== process.env.NODE_ENV,
   devtool: 'cheap-eval-source-map',
@@ -39,21 +26,37 @@ module.exports = {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'babel-loader',
-        },
+          loader: 'babel-loader'
+        }
       },
       {
         test: /style.css$/,
-        use: blocksCSSPlugin.extract(extractConfig),
+        use: [
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [ require('autoprefixer') ]
+            }
+          }
+        ]
       },
       {
         test: /editor.css$/,
-        use: editBlocksCSSPlugin.extract(extractConfig),
-      },
-    ],
+        use: [
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [ require('autoprefixer') ]
+            }
+          }
+        ]
+      }
+    ]
   },
   plugins: [
     blocksCSSPlugin,
-    editBlocksCSSPlugin,
-  ],
+    editBlocksCSSPlugin
+  ]
 };

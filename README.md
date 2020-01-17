@@ -11,7 +11,7 @@ The structure and setup of this repository is taken from [@zgordon/how-to-gutenb
 
 ## Setup
 
-Place this project directory in `wp-content/plugins` and then run:
+Place this project directory in `wp-content/plugins` and then, in the `wp-content/plugins/detailer` directory, run:
 
 ```
 yarn
@@ -20,13 +20,13 @@ yarn
 To build the files **for development** run:
 
 ```
-yarn run dev
+yarn dev
 ```
 
 To build the files **for production** run:
 
 ```
-yarn run build
+yarn build
 ```
 
 The tutorial linked above goes into much more detail on how to set up the plugin and walks through writing the code for the custom Gutenberg block. If you experience any problems or have any questions please file an issue.
