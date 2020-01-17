@@ -19,6 +19,11 @@ function register_dynamic_block() {
 
 function render_dynamic_block($attributes) {
   // Parse attributes
+  $book_details_imageObj = $attributes['image'];
+  $book_details_image_url = $book_details_imageObj['sizes']['full']['url'];
+  $book_details_image_alt_text = $book_details_imageObj['alt'];
+  $book_details_image_width = $book_details_imageObj['sizes']['full']['width'] / 2;
+
   $book_details_title = $attributes['title'];
   $book_details_author = $attributes['author'];
   $book_details_summary = $attributes['summary'];
@@ -28,6 +33,10 @@ function render_dynamic_block($attributes) {
   /* BEGIN HTML OUTPUT */
 ?>
   <div class="block-book-details">
+    <?php if ($book_details_image_url) : ?>
+      <img class="book-details-image" src="<?php echo $book_details_image_url; ?>" alt="<?php echo $book_details_image_alt_text; ?>" width="<?php echo $book_details_image_width; ?>" />
+    <?php endif; ?>
+
     <h3 class="block-book-details-title"><?php echo $book_details_title; ?></h3>
     <span class="block-book-details-author"><?php echo $book_details_author; ?></span>
 

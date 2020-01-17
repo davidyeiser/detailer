@@ -9,7 +9,8 @@ import './editor.css'
 
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
-const { RichText } = wp.editor
+const { MediaUpload, MediaUploadCheck, RichText } = wp.blockEditor
+const { Button } = wp.components
 
 registerBlockType('davidyeiser-detailer/book-details', {
   title: __( 'Book Details' ),
@@ -32,6 +33,10 @@ registerBlockType('davidyeiser-detailer/book-details', {
 
   // Set up data model for custom block
   attributes: {
+    image: {
+      type: 'object',
+      selector: 'js-book-details-image'
+    },
     title: {
       type: 'string',
       selector: 'js-book-details-title'
@@ -44,7 +49,7 @@ registerBlockType('davidyeiser-detailer/book-details', {
       type: 'string',
       selector: 'js-book-details-summary',
       multiline: 'p'
-    },
+    }
   },
 
   // The UI for the WordPress editor
@@ -52,8 +57,34 @@ registerBlockType('davidyeiser-detailer/book-details', {
     // Pull out the props we'll use
     const { attributes, className, setAttributes } = props
 
+    // Pull out specific attributes for clarity below
+    const { image } = attributes
+
     return (
       <div className={className}>
+        <MediaUploadCheck>
+          <MediaUpload
+            className="js-book-details-image wp-admin-book-details-image"
+            allowedTypes={['image']}
+            multiple={false}
+            value={image ? image.id : ''}
+            onSelect={image => setAttributes({ image: image })}
+            render={({ open }) => (
+              image ?
+                <div>
+                  <p>
+                    <img src={image.url} width={image.width / 2} />
+                  </p>
+
+                  <p>
+                    <Button onClick={() => setAttributes({ image: '' })} className="button is-small">Remove</Button>
+                  </p>
+                </div> :
+                <Button onClick={open} className="button">Upload Image</Button>
+            )}
+          />
+        </MediaUploadCheck>
+
         <RichText
           className="js-book-details-title wp-admin-book-details-title"
           value={attributes.title}
