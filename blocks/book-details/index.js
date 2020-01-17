@@ -9,7 +9,7 @@ import './editor.css'
 
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
-const { RichText } = wp.editor
+const { RichText } = wp.blockEditor
 
 registerBlockType('davidyeiser-detailer/book-details', {
   title: __( 'Book Details' ),
