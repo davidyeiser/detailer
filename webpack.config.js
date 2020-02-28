@@ -12,7 +12,7 @@ const editBlocksCSSPlugin = new MiniCssExtractPlugin({
 
 module.exports = {
   entry: {
-    'editor.blocks': './blocks/index.js'
+    'editor.blocks': './blocks/index.js',
   },
   output: {
     path: path.resolve( __dirname ),

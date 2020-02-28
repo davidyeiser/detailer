@@ -25,10 +25,10 @@ function render_dynamic_block($attributes) {
   $book_details_image_width = $book_details_imageObj['sizes']['full']['width'] / 2;
 
   $book_details_have_read = $attributes['haveRead'];
-
   $book_details_title = $attributes['title'];
   $book_details_author = $attributes['author'];
   $book_details_summary = $attributes['summary'];
+  $book_details_quotes = $attributes['quotes'];
 
   ob_start(); // Turn on output buffering
 
@@ -38,7 +38,7 @@ function render_dynamic_block($attributes) {
     <?php if ($book_details_have_read) : ?>
       <p><em>This book has been read.</em></p>
     <?php endif; ?>
-    
+
     <?php if ($book_details_image_url) : ?>
       <img class="book-details-image" src="<?php echo $book_details_image_url; ?>" alt="<?php echo $book_details_image_alt_text; ?>" width="<?php echo $book_details_image_width; ?>" />
     <?php endif; ?>
@@ -48,6 +48,19 @@ function render_dynamic_block($attributes) {
 
     <div class="block-book-details-summary">
       <?php echo $book_details_summary; ?>
+    </div>
+
+    <div class="book-details-quotes">
+		<?php
+		  foreach($book_details_quotes as $quote) :
+		?>
+      <blockquote class="book-details-quote-<?php echo $quote['id']; ?> book-details-quote">
+        <?php echo $quote['content']; ?>
+        <cite><?php echo $quote['pageRef']; ?></cite>
+      </blockquote>
+    <?php
+		  endforeach;
+		?>
     </div>
   </div>
 <?php
