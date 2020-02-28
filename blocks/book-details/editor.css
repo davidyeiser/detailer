@@ -4,3 +4,18 @@
 .wp-admin-book-details-summary {
   margin-top: 24px;
 }
+
+.wp-admin-book-details-quote {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid #eee;
+}
+.wp-admin-book-details-quote-content p {
+  margin: 0;
+  font-size: 16px;
+  font-style: italic;
+}
+.wp-admin-book-details-quote-page-ref p {
+  margin: 10px 0 0 0;
+  font-size: 15px;
+}
