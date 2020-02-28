@@ -9,8 +9,8 @@ import './editor.css'
 
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
-const { MediaUpload, MediaUploadCheck, RichText } = wp.blockEditor
-const { Button } = wp.components
+const { InspectorControls, MediaUpload, MediaUploadCheck, RichText } = wp.blockEditor
+const { Button, PanelBody, PanelRow, ToggleControl } = wp.components
 
 registerBlockType('davidyeiser-detailer/book-details', {
   title: __( 'Book Details' ),
@@ -49,6 +49,10 @@ registerBlockType('davidyeiser-detailer/book-details', {
       type: 'string',
       selector: 'js-book-details-summary',
       multiline: 'p'
+    },
+    haveRead: {
+      type: 'boolean',
+      selector: 'js-book-details-read'
     }
   },
 
@@ -58,10 +62,26 @@ registerBlockType('davidyeiser-detailer/book-details', {
     const { attributes, className, setAttributes } = props
 
     // Pull out specific attributes for clarity below
-    const { image } = attributes
+    const { haveRead, image } = attributes
 
     return (
       <div className={className}>
+
+        {/* Sidebar Controls */}
+        <InspectorControls>
+          <PanelBody title={__('Book Status')}>
+            <PanelRow>
+              <ToggleControl
+                className="js-book-details-read"
+                label="Read"
+                checked={haveRead}
+                help={haveRead ? "This book has been read." : "Currently unread."}
+                onChange={checked => setAttributes({ haveRead: checked })}
+              />
+            </PanelRow>
+          </PanelBody>
+        </InspectorControls>
+
         <MediaUploadCheck>
           <MediaUpload
             className="js-book-details-image wp-admin-book-details-image"
