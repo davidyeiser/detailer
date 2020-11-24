@@ -4,7 +4,6 @@
 .wp-admin-book-details-summary {
   margin-top: 24px;
 }
-
 .wp-admin-book-details-quote {
   margin-top: 24px;
   padding-top: 18px;
@@ -19,3 +18,8 @@
   margin: 10px 0 0 0;
   font-size: 15px;
 }
+.why { left: 0; top: 0; }
+.not { opacity: 0 }
+.plz { top: 50px; }
+.no { color: red }
+.text-no { color: blue }
