@@ -7,9 +7,6 @@
 // Used to make item ids
 import shortid from 'shortid'
 
-//  Import CSS.
-import './editor.css'
-
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
 const { InspectorControls, MediaUpload, MediaUploadCheck, RichText } = wp.blockEditor

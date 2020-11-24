@@ -1,25 +1,17 @@
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
 
-// Set different CSS extraction for editor only and common block styles
-// const blocksCSSPlugin = new MiniCssExtractPlugin({
-//   filename: './assets/css/blocks.style.css'
-// });
-// const editBlocksCSSPlugin = new MiniCssExtractPlugin({
-//   filename: './assets/css/blocks.editor.css'
-// });
-
-function recursiveIssuer(m, c) {
+// see https://webpack.js.org/plugins/mini-css-extract-plugin/#extracting-css-based-on-entry
+const recursiveIssuer = (m, c) => {
   const issuer = m.issuer;
-  // For webpack@4 chunks =
 
   if (issuer) {
     return recursiveIssuer(issuer, c);
   }
 
   const chunks = m._chunks;
-  // For webpack@4 chunks = m._chunks
 
   for (const chunk of chunks) {
     return chunk.name;
@@ -28,69 +20,39 @@ function recursiveIssuer(m, c) {
   return false;
 }
 
+// CSS files to load into assets/css
 const cssFiles = [
   {
-    name : 'blocks.editor.css',
-    path : './assets/css/blocks.editor.css'
+    name : 'editor',
+    path : './blocks/book-details/editor.css'
   },
   {
-    name: 'blocks.style.css',
-    path: './assets/css/blocks.style.css'
+    name: 'style',
+    path: './blocks/book-details/style.css'
   }
 ]
 
 const entryPoints = {
-  // main JS file
+  // default entry point (main JS file)
   'editor.blocks': './blocks/index.js',
-
-  // editor-specific block CSS
-  'blocks.editor.css': './assets/css/blocks.editor.css',
-
-  // public-facing block CSS
-  'blocks.style.css': './assets/css/blocks.style.css'
 }
 
-const cacheGroups = {
-  'blocks.editor.css': {
-    name: 'blocks.editor.css',
-    test: (m,c,entry = 'blocks.editor.css') => m.constructor.name === 'CssModule' && recursiveIssuer(m) === entry,
-    chunks: 'all',
-    enforce: true
-  },
-  'blocks.style.css': {
-    name: 'blocks.style.css',
-    test: (m,c,entry = 'blocks.style.css') => m.constructor.name === 'CssModule' && recursiveIssuer(m) === entry,
-    chunks: 'all',
-    enforce: true
-  }
-}
-// {
-//   "scss" : [
-//     { // entryPoint
-//       "path" : "assets/scss/styles-red.scss",
-//       "name" : "styles-red",
-//       "primary" : true
-//     },
-//     {
-//       "path" : "assets/scss/styles-light-blue.scss",
-//       "name" : "styles-light-blue",
-//       "primary" : false
-//     }
-//   ]
-// }
-// config.scss.forEach(entryPoint => {
-//   cacheGroups[entryPoint.name] = {
-//     name: entryPoint.name,
-//     test: (m,c,entry = entryPoint.name) => m.constructor.name === 'CssModule' && recursiveIssuer(m) === entry,
-//     chunks: 'all',
-//     enforce: true
-//   }
-// });
+// add cssFiles as entry points
+cssFiles.map(cssFile => entryPoints[cssFile.name] = cssFile.path)
+
+// set up empty cache groups object
+const cacheGroups = {}
+
+// add cssFiles to cache groups
+cssFiles.map(cssFile => cacheGroups[cssFile.name] = {
+  name: cssFile.name,
+  test: (m,c,entry = cssFile.name) => m.constructor.name === 'CssModule' && recursiveIssuer(m) === entry,
+  chunks: 'all',
+  enforce: true
+})
 
 module.exports = {
-  entry: {
-    'editor.blocks': './blocks/index.js',
-  },
+  entry: entryPoints,
   output: {
     path: path.resolve(__dirname),
     filename: './assets/js/[name].js'
@@ -129,8 +91,12 @@ module.exports = {
     }
   },
   plugins: [
+    // remove erroneous JS files generated from CSS entry points
+    new FixStyleOnlyEntriesPlugin(),
+
+    // place extracted CSS files in assets/css directory
     new MiniCssExtractPlugin({
-      filename: ({ chunk }) => `${chunk.name}.css`,
+      filename: './assets/css/blocks.[name].css'
     })
   ]
 };

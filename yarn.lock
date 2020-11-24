@@ -4146,6 +4146,11 @@ webpack-cli@^4.2.0:
     v8-compile-cache "^2.2.0"
     webpack-merge "^4.2.2"
 
+webpack-fix-style-only-entries@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/webpack-fix-style-only-entries/-/webpack-fix-style-only-entries-0.6.0.tgz#193ab04c63cba5c1da92d5ec34a48aa1448a853c"
+  integrity sha512-9d3S+Y3b90D5OFUxO6bA/o7Ebx0uGWSPoVepvMvMEup7XefqdrDPEDI10tuFhxERD/xkMJAViakE1NPZn9zA+w==
+
 webpack-merge@^4.2.2:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-4.2.2.tgz#a27c52ea783d1398afd2087f547d7b9d2f43634d"
