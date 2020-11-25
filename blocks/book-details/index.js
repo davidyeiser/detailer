@@ -5,7 +5,7 @@
  */
 
 // Used to make item ids
-import shortid from 'shortid'
+import { nanoid } from 'nanoid'
 
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
@@ -85,7 +85,7 @@ registerBlockType('davidyeiser-detailer/book-details', {
 
       // set up empty quote
       const emptyQuote = {
-        id: shortid.generate(),
+        id: nanoid(),
         content: '',
         pageRef: ''
       }

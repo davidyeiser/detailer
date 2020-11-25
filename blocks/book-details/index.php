@@ -52,7 +52,7 @@ function render_dynamic_block($attributes) {
 
     <div class="book-details-quotes">
 		<?php
-		if ($book_details_quotes) :
+    if ($book_details_quotes) :
       foreach($book_details_quotes as $quote) :
 		?>
       <blockquote class="book-details-quote-<?php echo $quote['id']; ?> book-details-quote">
@@ -60,7 +60,7 @@ function render_dynamic_block($attributes) {
         <cite><?php echo $quote['pageRef']; ?></cite>
       </blockquote>
     <?php
-  		 endforeach;
+      endforeach;
     endif;
 		?>
     </div>

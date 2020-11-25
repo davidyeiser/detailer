@@ -34,7 +34,7 @@ const cssFiles = [
 
 const entryPoints = {
   // default entry point (main JS file)
-  'editor.blocks': './blocks/index.js',
+  'editor.blocks': './blocks/index.js'
 }
 
 // add cssFiles as entry points
