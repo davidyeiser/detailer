@@ -4,9 +4,6 @@
  *  Add details for a book to a post or page.
  */
 
-//  Import CSS.
-import './editor.css'
-
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
 const { RichText } = wp.blockEditor
