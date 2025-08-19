@@ -1,9 +1,6 @@
-# Detailer
+# ⚠️ RETIRED
 
-A plugin for WordPress that creates a custom Gutenberg block called Book Details. It’s a companion setup for a two-part tutorial on creating custom dynamic Gutenberg blocks for Wordpress.
-
-- [Create Your Own Dynamic Gutenberg Block for Wordpress, Part 1](https://davidyeiser.com/tutorials/wordpress-create-dynamic-gutenberg-block)
-- [Create Your Own Dynamic Gutenberg Block for Wordpress, Part 2](https://davidyeiser.com/tutorials/wordpress-dynamic-gutenberg-block-code-snippets)
+This is a plugin for WordPress (named **Detailer**) that creates a custom Gutenberg block called **Book Details**. It was a companion repository for a two-part tutorial on creating your own dynamic Gutenberg block for WordPress (no longer accessible). It was written when Gutenberg blocks were new and is now very out of date and I would not recommend using it as a reference!
 
 ## Credit
 
@@ -28,5 +25,3 @@ To build the files **for production** run:
 ```
 yarn build
 ```
-
-The tutorial linked above goes into much more detail on how to set up the plugin and walks through writing the code for the custom Gutenberg block. If you experience any problems or have any questions please file an issue.
